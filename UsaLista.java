@@ -20,9 +20,9 @@ public class UsaLista
     System.out.print(lista);
     lista.intercambiarNodos("A", "Y");
     System.out.println(lista);
-    lista.buscarNodo("H");
+    lista.buscarNodo("A", "D");
     System.out.println(lista);
-    //lista.buscarNodoClave("H");
-    //System.out.println(buscar.NodoClave);
+    lista.intercambiarNodos("D", "A");
+    System.out.println(lista);
     }
 }
