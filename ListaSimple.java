@@ -14,7 +14,7 @@ public class ListaSimple
                top.name = dato;
                top.next = null;
        
-            return true;
+                return true;
              }
              else {
             return false;
@@ -66,13 +66,40 @@ public class ListaSimple
             else return false;
         }
         
+        //Buscar un nodo por su clave y agregar un nodo después del nodo buscado
+    public void buscarNodo(String nombre, String nuevoNodoValor) {
+    Node temp = this.top;
+
+    while (temp != null) {
+        if (temp.name.equals(nombre)) {
+            System.out.println("Nodo encontrado, si existe");
+            
+            // Crear un nuevo nodo con el valor proporcionado
+            Node nuevoNodo = new Node();
+            nuevoNodo.name = nuevoNodoValor;
+
+            // Insertar el nuevo nodo después del nodo encontrado
+            nuevoNodo.next = temp.next;
+            temp.next = nuevoNodo;
+
+            System.out.println("Nuevo nodo agregado después del nodo encontrado");
+            
+            // Romper el bucle ya que ya se ha encontrado el nodo
+            break;
+        } else {
+            System.out.println("Nodo no encontrado, no existe en la lista");
+        }
+
+        temp = temp.next;
+    }
+}
         
-       public void imprimir(){
-           for (Node temp = this.top; temp != null; temp = temp.next){
+        public void imprimir(){
+               for (Node temp = this.top; temp != null; temp = temp.next){
                System.out.print("[" + temp.name + "] ->");
-           }
+            }
            System.out.print("[X]\n");
-       }
+        }
    
         public String toString(){//Este por el momento no se utiliza pero es para imprimir una cadena, si no está devuelve la dirección de memoria donde está el objeto
             String cadAux = "";
@@ -150,19 +177,4 @@ public class ListaSimple
 
         return false; // No se encontraron ambos nodos especificados
     }
-    
-    public Node buscarNodo(String nombre) {
-        Node temp = top;
-        while (temp != null && !temp.name.equals(nombre)) {
-            temp = temp.next;
-            System.out.println("*************************7");
-        }
-        
-        return temp;
-    }
-            }
-        
-        //Buscar un nodo por le valor de su campo clave y devolver una referencia.
-        //Buscar un nodo por su campo clave e insertar un nuevo nodo después de él.
-        //intercambiar un nodo por otro buscado.
-    
+}
